@@ -18,6 +18,7 @@ to
 -> Create a Navbar component and import in the App.jsx file (follow daisyui doc)
 -> Create a Footer component
 -> install react-router-dom
+-> Create componets folder and keep all components within it
 -> Create a Login component (Using Card, text input from daisyui)
 -> install axios
 -> install cors in backend and add it as a middleware(npm i cors)(to avoid cors error in frontend);
@@ -27,3 +28,11 @@ to
   (When you pass withCredentials: true in your Axios request, you are telling the browser to include cookies and HTTP authentication information with the request)
 -> install redux toolkit (npm install @reduxjs/toolkit react-redux)
     (Reference- https://redux-toolkit.js.org/tutorials/quick-start)
+-> create utils/appStore.js (for redux configuration)
+-> Wrap the application with Provider component from redux and pass store as prop
+-> create utils/userSlice.js
+-> configureStore->Provider->createSlice->add reducer to store
+    Use redux dev tool extension in the browser to check the redux store activities (need updated browser )
+-> using useDispatch(), dispatch the action (defined in the slice), payload to store (payload-> response data got from the successfull login )
+While subscribing to the store using useSelector(store=>store.userReducer), use exact reducer name used inside the configureStore()
+-> create utils/constants.js, keep BASE_URL here (hardcode datas should keep here)
