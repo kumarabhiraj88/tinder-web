@@ -13,6 +13,7 @@ function App() {
           <Route path="/" element={<Body />} >
             <Route path="login" element={<Login />} />
             <Route  element={<ProtectedRoutes />} >
+            <Route path="/" element={<h1>Feed Page</h1>} />
             <Route path="profile" element={<h1>Protected Profile Route</h1>} />
           </Route>
           </Route>

@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 
 const ProtectedRoutes = () => {
   const user= useSelector(store=>store.userReducer);
-  return user ? <Outlet /> : <Navigate to="/" />
+  return user ? <Outlet /> : <Navigate to="/login" />
 }
 
 export default ProtectedRoutes
