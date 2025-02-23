@@ -19,9 +19,8 @@ const Login = () => {
       const result= await axios.post(`${BASE_URL}/auth/login`, {emailId, password},{withCredentials: true});
 
       dispatch(addUser(result.data));
-      navigate("/profile");
+      navigate("/");
     }catch(err){
-      console.log('hi', err)
       setError(err.response.data || "Something went wrong");
     }    
   }
