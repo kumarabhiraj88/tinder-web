@@ -38,4 +38,5 @@ While subscribing to the store using useSelector(store=>store.userReducer), use 
 -> create utils/constants.js, keep BASE_URL here (hardcode datas should keep here)
 -> while refreshing page, state data will lost, to avoid this keep state updated with loggedin user data using a  common api call
 -> create a Feed component, create feedSlice and add it in the appStore config
--> create a FeedCard component and import in teh Feed component, pass feeds to the FeedCard component, use Card from daisyUI
+-> create a UserCard component and import in the Feed component, pass feeds to the UserCard component, use Card from daisyUI
+-> create EditProfile component and import in the Profile component, also import UserCard component here

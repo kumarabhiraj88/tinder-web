@@ -1,5 +1,5 @@
-const FeedCard = ({feed}) => {
-    const { firstName, lastName, age, gender, about, photoUrl } = feed;
+const UserCard = ({user}) => {
+    const { firstName, lastName, age, gender, about, photoUrl } = user;
 
     return(   <div className="card bg-base-100 w-96 shadow-sm">
         <figure>
@@ -20,4 +20,4 @@ const FeedCard = ({feed}) => {
       </div>)
 }
 
-export default FeedCard;
+export default UserCard;
