@@ -23,7 +23,7 @@ const Feed = ()=>{
         }
     },[])
     
-    return(<div className="flex justify-center my-5"> 
+    return feed && (<div className="flex justify-center my-5"> 
         <FeedCard feed={feed[0]} />
         </div>)
 }
