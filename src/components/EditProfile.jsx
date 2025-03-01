@@ -100,7 +100,7 @@ const EditProfile = ({user}) => {
   </div>
 </div>
     </div>
-    <UserCard user={user} />
+    <UserCard user={user} edit={true} />
     </div>
     {showToast &&<Toast msg={"Profile updated successfully"} />}
     </>

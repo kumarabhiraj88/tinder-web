@@ -40,3 +40,4 @@ While subscribing to the store using useSelector(store=>store.userReducer), use 
 -> create a Feed component, create feedSlice and add it in the appStore config
 -> create a UserCard component and import in the Feed component, pass feeds to the UserCard component, use Card from daisyUI
 -> create EditProfile component and import in the Profile component, also import UserCard component here
+-> Toast component added
