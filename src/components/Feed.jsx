@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 import { BASE_URL } from "../utils/constants";
 import { useSelector, useDispatch } from "react-redux";
@@ -7,7 +7,7 @@ import UserCard from "./UserCard";
 
 const Feed = ()=>{
     const dispatch = useDispatch();
-    const feed = useSelector(store=>store.feedReducer);
+    const feed = useSelector(store=>store.feed);
     const getFeed=async()=>{
         try{
             const result= await axios.get(`${BASE_URL}/user/feed`,{withCredentials: true});
@@ -18,12 +18,14 @@ const Feed = ()=>{
     }
 
     useEffect(()=>{
-        if(!feed){
+        if(feed.length===0){
             getFeed();
         }
     },[])
 
-    if(feed?.length <= 0) return (<div className="flex justify-center my-5">No users found</div>);
+
+    
+    if(feed?.length === 0) return (<div className="flex justify-center my-5">No users found</div>);
     
     return feed && (<div className="flex justify-center my-5"> 
         <UserCard user={feed[0]} />

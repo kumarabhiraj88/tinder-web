@@ -7,7 +7,7 @@ npm create vite@latest my-vue-app -- --template vue
 to 
 -> npm create vite@latest my-app-name -- --template react
 -> Removed unnecessary codes and files (App.css,src/assets)
--> Do npm install
+-> npm install
 -> npm run dev
 -> git init (initialize git into the project)
 -> create a git repository and push the code
@@ -41,3 +41,5 @@ While subscribing to the store using useSelector(store=>store.userReducer), use 
 -> create a UserCard component and import in the Feed component, pass feeds to the UserCard component, use Card from daisyUI
 -> create EditProfile component and import in the Profile component, also import UserCard component here
 -> Toast component added
+-> To avoid the data loss during page refresh from the browser, implemented redux-persist.
+    (npm i redux-persist)

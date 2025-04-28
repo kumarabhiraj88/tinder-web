@@ -90,7 +90,7 @@ const EditProfile = ({user}) => {
     
     <fieldset className="fieldset">
     <legend className="fieldset-legend">About</legend>
-    <textarea className="textarea h-24" name={about} onChange={(e)=>setAbout(e.target.value)} placeholder="About">{about}</textarea>
+    <textarea className="textarea h-24" value={about} name={about} onChange={(e)=>setAbout(e.target.value)} placeholder="About" />
     </fieldset>
 
 <p className='text-red-500'>{error}</p>
