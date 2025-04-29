@@ -2,12 +2,17 @@ import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import { BASE_URL, ACCEPTED, REJECTED } from '../utils/constants';
 import { useSelector, useDispatch } from 'react-redux';
-import { addRequest } from '../utils/requestSlice';
+import { addRequest, removeRequest } from '../utils/requestSlice';
+import Toast from './common/Toast';
+import NoImage from './common/NoImage';
+
 
 const Requests = () => {
     const dispatch = useDispatch();
     const requests = useSelector(store=>store.request);
     const [showToast, setShowToast]= useState(false);
+    const [toastMessage, setToastMessage]= useState('');
+    const [toastClass, setToastClass]= useState('');
 
     //show all the connection requests 
     const fetchRequests = async () => {
@@ -22,13 +27,14 @@ const Requests = () => {
     const handleRequest=async({status, requestId})=>{
         try{    
             await axios.patch(`${BASE_URL}/request/review/${status}/${requestId}`,{}, {withCredentials: true});
-            dispatch(removeFeed(requestId));
+            dispatch(removeRequest(requestId));
             setShowToast(true)
+            setToastMessage(status===ACCEPTED? "Request Accepted": "Request Rejected");
+            setToastClass(status===ACCEPTED? "alert-success": "alert-error")
         }catch(err){    
             console.log("Error sending request",err.message);
         } 
     }
-
 
     useEffect(() => {
         fetchRequests();
@@ -46,16 +52,15 @@ const Requests = () => {
           },[showToast]);
 
     
-    if(requests?.length === 0) return (<div className="flex justify-center my-5">No Requests found</div>);
 
-  return requests && (<div className="text-center my-10"> 
-        <h1 className='text-5xl font-bold mt-0 mb-5'>Requests</h1>
+  return (<>{requests?.length > 0?<div className="text-center my-10"> 
+        <h1 className='text-3xl font-bold mb-6'>Requests</h1>
         {requests?.map((request)=>{
             const {senderId, _id} = request;
             const {firstName, lastName, age, gender, photoUrl, about} = senderId;
             return (<div className='flex items-center w-1/2 m-auto p-4' key={_id}>
                 <div className='flex-shrink-0'>
-                  <img alt="profile pic" className='w-20 h-20 rounded-full' src={photoUrl} />
+                 {photoUrl ? <img alt="profile pic" className='w-20 h-20 rounded-full' src={photoUrl} /> : <NoImage />}
                 </div>
               
                 <div className='text-left ml-4'>
@@ -78,8 +83,8 @@ const Requests = () => {
               
               )
         })}
-        {showToast &&<Toast msg={"Send successfully"} />}
-        </div>)
+        
+        </div>: <div className="flex justify-center my-5">No Requests found</div>}{showToast && <Toast toastClass={toastClass} msg={toastMessage} />}</>)
 }
 
 export default Requests

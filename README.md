@@ -34,7 +34,7 @@ to
 -> configureStore->Provider->createSlice->add reducer to store
     Use redux dev tool extension in the browser to check the redux store activities (need updated browser )
 -> using useDispatch(), dispatch the action (defined in the slice), payload to store (payload-> response data got from the successfull login )
-While subscribing to the store using useSelector(store=>store.userReducer), use exact reducer name used inside the configureStore()
+While subscribing to the store using useSelector(store=>store.user), use exact reducer name used inside the configureStore()
 -> create utils/constants.js, keep BASE_URL here (hardcode datas should keep here)
 -> while refreshing page, state data will lost, to avoid this keep state updated with loggedin user data using a  common api call
 -> create a Feed component, create feedSlice and add it in the appStore config

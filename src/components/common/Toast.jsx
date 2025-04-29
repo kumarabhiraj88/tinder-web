@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Toast = ({msg}) => {
+const Toast = ({msg, toastClass}) => {
   return (
-    <div className="toast toast-top toast-end">
-    <div className="alert alert-success">
+    <div className="toast toast-top toast-center">
+    <div className={toastClass? `alert ${toastClass}`: `alert alert-success`}>
         <span>{msg}</span>
     </div>
     </div>
