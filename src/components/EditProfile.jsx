@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
 import Toast from './common/Toast';
+import PropTypes from 'prop-types';
 
 const EditProfile = ({user}) => {
     const dispatch = useDispatch();
@@ -107,4 +108,14 @@ const EditProfile = ({user}) => {
   )
 }
 
+EditProfile.propTypes={
+  user:PropTypes.shape({
+    firstName: PropTypes.string,
+    lastName: PropTypes.string,
+    age: PropTypes.number,
+    gender: PropTypes.string,
+    photoUrl: PropTypes.string,
+    about: PropTypes.string,
+  })
+}
 export default EditProfile

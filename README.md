@@ -43,3 +43,7 @@ While subscribing to the store using useSelector(store=>store.user), use exact r
 -> Toast component added
 -> To avoid the data loss during page refresh from the browser, implemented redux-persist.
     (npm i redux-persist)
+-> Also implement RTK Query to improve performance and duplication while adding data to reducers through slices
+    (used- createEntityAdapter of @reduxjs/toolkit)
+-> npm install prop-types
+    (for prop validation)
