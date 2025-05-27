@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../api/axios';
 import { addUser } from '../utils/userSlice';
 import { BASE_URL } from '../utils/constants';
 
@@ -16,7 +16,7 @@ const Login = () => {
 
   const handleLogin=async()=>{
     try{
-      const result= await axios.post(`${BASE_URL}/auth/login`, {emailId, password},{withCredentials: true});
+      const result= await axios.post(`${BASE_URL}/auth/login`, {emailId, password});
       //Excluded sensitive info like password
       const sanitizedUserData = {...result.data, password: undefined}
       dispatch(addUser(sanitizedUserData));

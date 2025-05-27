@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../api/axios';
 import React, {useState} from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { BASE_URL } from '../utils/constants';
@@ -32,7 +32,7 @@ const Signup = () => {
     }
     const handleSignup=async()=>{
         try{
-            const result =await axios.post(`${BASE_URL}/auth/signup`, formData, {withCredentials: true})
+            const result =await axios.post(`${BASE_URL}/auth/signup`, formData)
             dispatch(addUser(result?.data?.data));
             return navigate("/profile")
         }catch(err){    

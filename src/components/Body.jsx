@@ -4,7 +4,7 @@ import Footer from './Footer';
 import { Outlet, useNavigate, Navigate } from 'react-router-dom';
 import { BASE_URL } from '../utils/constants';
 import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios';
+import axios from "../api/axios";
 import { addUser } from '../utils/userSlice';
 import Login from './Login';
 
@@ -16,9 +16,7 @@ const Body = () => {
   
   const fetchUser=async()=>{
     try{
-      const result= await axios.get(`${BASE_URL}/profile/view`,{
-        withCredentials: true
-      });
+      const result= await axios.get(`${BASE_URL}/profile/view`);
       console.log('api result',result?.data);
       dispatch(addUser(result?.data))
     }catch(err){
@@ -32,8 +30,8 @@ const Body = () => {
 
   useEffect(()=>{
     //This token suggests the user might already be authenticated 
-    const token = localStorage.getItem("token");
-    if(token && !userData){
+    const accessToken = localStorage.getItem("accessToken");
+    if(accessToken && !userData){
       fetchUser();
     }
     

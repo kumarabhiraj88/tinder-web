@@ -1,5 +1,5 @@
 import {INTERESTED, IGNORED, BASE_URL} from "../utils/constants";
-import axios from "axios";
+import axios from "../api/axios";
 import {removeFeed} from "../utils/feedSlice";
 import { useDispatch } from "react-redux";
 
@@ -9,7 +9,7 @@ const UserCard = ({user, edit}) => {
 
     const handleSendRequest=async({status, receiverId})=>{
         try{    
-            await axios.post(`${BASE_URL}/request/send/${status}/${receiverId}`,{}, {withCredentials: true});
+            await axios.post(`${BASE_URL}/request/send/${status}/${receiverId}`,{});
             dispatch(removeFeed(receiverId));
         }catch(err){    
             console.log("Error sending request",err.message);

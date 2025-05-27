@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import axios from 'axios';
+import axios from '../api/axios';
 import { BASE_URL, ACCEPTED, REJECTED } from '../utils/constants';
 import { useSelector, useDispatch } from 'react-redux';
 import { addRequest, removeRequest } from '../utils/requestSlice';
@@ -17,7 +17,7 @@ const Requests = () => {
     //show all the connection requests 
     const fetchRequests = async () => {
         try {
-            const response = await axios.get(`${BASE_URL}/user/requests`, {withCredentials: true});
+            const response = await axios.get(`${BASE_URL}/user/requests`);
             dispatch(addRequest(response.data.data));
         } catch (error) {
             console.log(error);
